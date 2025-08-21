@@ -1,0 +1,19 @@
+Dark Brown (Borders, Shadows) – #4A2C2A
+
+Cream White (Text, BG highlight) – #FAF3E0
+
+Terracotta (Hero BG, Buttons) – #E2725B
+
+Sandy Beige (Cards, Section BG) – #D4B996
+
+Rustic Brown (Navbar & Footer BG) – #8B5E3C
+
+Brick Red (Headings/Accents) – #8B0000
+
+Olive Green (Accent/Highlight) – #6B8E23
+
+Turquoise Blue (CTA Buttons/Links) – #40E0D0
+
+Playfair Display → Headings / Navbar
+
+Roboto → Body text / Paragraphs (modern + readable)
