@@ -2,7 +2,7 @@ import HeroBanner from "./components/hero-banner";
 import WelcomeSection from "./components/welcome";
 import NewProducts from "./components/new-products";
 import Services from "./components/services";
-// import OurGallery from "./components/our-gellary";
+import OurGallery from "./components/our-gellary";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
       <WelcomeSection/>
       <NewProducts />
       <Services/>
-      {/* <OurGallery /> */}
+      <OurGallery />
     </>
   );
 }
