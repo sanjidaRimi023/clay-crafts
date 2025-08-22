@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Classic Earthen Vase",
+    "detail": "A tall handcrafted vase made from natural clay with a matte finish.",
+    "price": 1200,
+    "category": "Vase",
+    "description": "Perfect for both modern and traditional interiors, this vase showcases timeless craftsmanship.",
+    "tags": ["handmade", "decor", "natural", "clay"],
+    "image": "https://i.ibb.co.com/rRdNyDV7/2.jpg"
+  },
+  {
+    "name": "Rustic Water Jug",
+    "detail": "A wide-mouthed jug with traditional earthen textures.",
+    "price": 950,
+    "category": "Jug",
+    "description": "Keeps water naturally cool and adds a rustic touch to your dining table.",
+    "tags": ["water", "eco-friendly", "rustic"],
+    "image": "https://i.ibb.co.com/fV1N9N8b/3.jpg"
+  },
+  {
+    "name": "Floral Painted Bowl",
+    "detail": "Hand-painted floral designs on a clay bowl.",
+    "price": 600,
+    "category": "Bowl",
+    "description": "Ideal for serving fruits or as a decorative centerpiece.",
+    "tags": ["painted", "colorful", "handcrafted"],
+    "image": "https://i.ibb.co.com/1fzCn6mH/4.jpg"
+  },
+  {
+    "name": "Minimalist Clay Cup Set",
+    "detail": "Set of 4 small clay cups with smooth finishing.",
+    "price": 700,
+    "category": "Cup",
+    "description": "Perfect for tea lovers who prefer authentic earthy flavors.",
+    "tags": ["tea", "cups", "set", "minimalist"],
+    "image": "https://i.ibb.co.com/CK8QRmpB/5.jpg"
+  },
+  {
+    "name": "Terracotta Lamp",
+    "detail": "Clay lamp with carved cutout patterns for soft light glow.",
+    "price": 1400,
+    "category": "Lamp",
+    "description": "Creates a warm and cozy ambiance in any room.",
+    "tags": ["lamp", "lighting", "decor"],
+    "image": "https://i.ibb.co.com/1fZyGDG6/8.jpg"
+  },
+  {
+    "name": "Earthen Planter",
+    "detail": "Medium-sized clay planter with drainage hole.",
+    "price": 850,
+    "category": "Planter",
+    "description": "Best for indoor plants and succulents.",
+    "tags": ["plants", "garden", "eco-friendly"],
+    "image": "https://i.ibb.co.com/pBK5GC9J/9.jpg"
+  },
+  {
+    "name": "Traditional Clay Plate",
+    "detail": "Flat clay plate with hand-burnished surface.",
+    "price": 500,
+    "category": "Plate",
+    "description": "Used for authentic traditional dining experience.",
+    "tags": ["dining", "handmade", "rustic"],
+    "image": "https://i.ibb.co.com/5W2KxRtm/7.jpg"
+  },
+  {
+    "name": "Glazed Ceramic Pot",
+    "detail": "Clay pot with glossy glaze finish.",
+    "price": 1100,
+    "category": "Pot",
+    "description": "Perfect for cooking or serving dishes with style.",
+    "tags": ["ceramic", "glazed", "kitchen"],
+    "image": "https://i.ibb.co.com/xKv0B0vf/11.jpg"
+  },
+  {
+    "name": "Decorative Clay Sculpture",
+    "detail": "Small decorative figurine crafted from clay.",
+    "price": 1600,
+    "category": "Decor",
+    "description": "Adds artistic value to home or office spaces.",
+    "tags": ["art", "sculpture", "handcrafted"],
+    "image": "https://i.ibb.co.com/Hf6679Kw/12.jpg"
+  },
+  {
+    "name": "Matka Storage Pot",
+    "detail": "Large round clay pot for storing water or grains.",
+    "price": 1300,
+    "category": "Storage",
+    "description": "An age-old storage solution with cooling effect.",
+    "tags": ["traditional", "storage", "matka"],
+    "image": "https://i.ibb.co.com/rK78FVnQ/13.jpg"
+  },
+  {
+    "name": "Clay Candle Holder",
+    "detail": "Small clay holder designed for candles or tea lights.",
+    "price": 450,
+    "category": "Candle Holder",
+    "description": "Brings an earthy glow to any space.",
+    "tags": ["candle", "light", "decor"],
+    "image": "https://i.ibb.co.com/Mx5k6TgZ/10.jpg"
+  },
+  {
+    "name": "Engraved Clay Mug",
+    "detail": "Clay mug with engraved tribal designs.",
+    "price": 750,
+    "category": "Mug",
+    "description": "Great for coffee or herbal drinks, with unique hand-carved patterns.",
+    "tags": ["mug", "engraved", "tribal", "handmade"],
+    "image": "https://i.ibb.co.com/CK8QRmpB/5.jpg"
+  }
+]

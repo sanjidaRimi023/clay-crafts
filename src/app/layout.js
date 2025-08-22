@@ -26,9 +26,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${playfair.variable} ${roboto.variable} antialiased`}>
         <Navbar />
-        <Providers>
+      
           <main className="min-h-screen"> {children} </main>
-        </Providers>
+    
         <footer>
           <Footer />
         </footer>

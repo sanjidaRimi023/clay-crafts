@@ -1,6 +1,8 @@
 import React from 'react'
 
-export default function Products() {
+export default async function Products() {
+  const data = await getProducts();
+  console.log(data);
   return (
     <div>Products</div>
   )

@@ -4,15 +4,18 @@ import Link from "next/link";
 import LoginForm from "./components/login-form";
 
 export default function LoginPage() {
-
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-[#D4B996] ">
       <div className="w-full max-w-md">
         <div className="bg-[#8B5E3C] rounded-xl shadow-xl p-8">
-          <span className="md:text-4xl font-bold items-center">
-            Welcome Back
-          </span>
-        <LoginForm/>
+          <h1 className="text-3xl font-bold text-center mb-2 text-[#FFF8E7]">
+            Welcome Back, Potter
+          </h1>
+          <p className="text-center mb-8 text-[#F5E6D3]">
+            Log in to continue crafting, discovering, and showcasing beautiful pottery pieces.
+          </p>
+
+          <LoginForm />
 
           {}
           <div className="mt-6">
