@@ -3,7 +3,7 @@ import { Hand, Leaf, Sparkles } from "lucide-react";
 export default function About() {
   return (
     <>
-      <section className="bg-[#D4B996] py-16 md:py-24 font-roboto">
+      <section className="bg-[#D4B996] py-16 md:py-24 roboto">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Title */}
           <div className="text-center flex flex-col items-center mb-12 md:mb-16">

@@ -2,7 +2,8 @@ import { Playfair_Display, Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
-import Providers from "./providers";
+import { Toaster } from "react-hot-toast";
+import NextAuthSessionProvider from "@/providers/NextAuthSessionProvider";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -24,15 +25,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${playfair.variable} ${roboto.variable} antialiased`}>
-        <Navbar />
-      
-          <main className="min-h-screen"> {children} </main>
-    
-        <footer>
-          <Footer />
-        </footer>
-      </body>
+      <NextAuthSessionProvider>
+        <body className={`${playfair.variable} ${roboto.variable} antialiased`}>
+          <Navbar />
+          <main className=""> {children} </main>
+          <Toaster position="top-right" />
+          <footer>
+            <Footer />
+          </footer>
+        </body>
+      </NextAuthSessionProvider>
     </html>
   );
 }

@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react"; 
+import { signIn } from "next-auth/react"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  // 👉 replace with actual auth state (from context, redux, or next-auth)
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
@@ -39,9 +39,11 @@ export default function Navbar() {
             </div>
           ) : (
             <div className="flex gap-4">
-              <Link href="/login" className="bg-white text-[#a8754e] px-4 py-1 rounded">
+                <button
+                onClick={() => signIn()}
+                  className="bg-white text-[#a8754e] px-4 py-1 rounded">
                 Login
-              </Link>
+              </button>
               <Link href="/register" className="border border-white text-white px-4 py-1 rounded">
                 Register
               </Link>

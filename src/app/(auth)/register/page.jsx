@@ -1,8 +1,6 @@
 "use client";
-
 import React from "react";
 import RegisterForm from "./components/register-form";
-
 const RegisterPage = () => {
   return (
     <section className="min-h-screen flex items-center justify-center p-4 bg-[#D4B996] ">
@@ -14,7 +12,7 @@ const RegisterPage = () => {
           Sign up and start creating, sharing, and organizing your ideas
           effortlessly.{" "}
         </p>
-    <RegisterForm/>
+        <RegisterForm />
         {/* OR Divider */}
         <div className="flex items-center my-6">
           <hr className="flex-grow border-t border-[#C9A66B]" />

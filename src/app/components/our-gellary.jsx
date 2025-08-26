@@ -81,7 +81,7 @@ export default function GallerySection() {
 
         <div className="text-center mb-4 md:mb-8">
           <h2 
-            className="font-playfair text-4xl md:text-5xl font-bold text-[#8B5E3C] mb-4"
+            className="playfair text-4xl md:text-5xl font-bold text-gray-800 mb-4"
             style={{ textShadow: '1px 1px 2px rgba(74, 44, 42, 0.1)' }}
           >
             From Our Hands to Your Home
@@ -125,7 +125,7 @@ export default function GallerySection() {
                   />
                 </div>
                 <article>
-                  <h3 className="font-playfair text-2xl font-bold text-[#8B5E3C]">
+                  <h3 className="playfair text-2xl font-bold text-gray-800">
                     {itemsData[index].title}
                   </h3>
                   <p className="text-md text-[#4A2C2A] mt-1">

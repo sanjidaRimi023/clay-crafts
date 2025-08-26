@@ -1,5 +1,9 @@
 import React from "react";
 import { MongoClient, ServerApiVersion } from "mongodb";
+export const collectionNames = {
+  USERS: "users",
+  PRODUCTS:"products"
+}
 
 export default function dbConnect(collectionName) {
   const uri = process.env.NEXT_PUBLIC_MONGODB_URL;
