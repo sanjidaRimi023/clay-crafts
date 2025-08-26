@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         <body className={`${playfair.variable} ${roboto.variable} antialiased`}>
           <Navbar />
           <main className=""> {children} </main>
-          <Toaster position="top-right" />
+          <Toaster position="top-center" />
           <footer>
             <Footer />
           </footer>

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 import { Eye, EyeClosed, Key, Mail } from "lucide-react";
 import { signIn } from "next-auth/react";
+import toast from "react-hot-toast";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,12 +22,11 @@ export default function LoginForm() {
       password: password,
     });
 
-    console.log("Login Response:", res);
-
     if (res?.error) {
-      alert("Invalid credentials");
+      toast.error("Invalid credentials");
     } else {
       window.location.href = "/";
+      toast.success("Welcome to clayCrafts");
     }
   };
   return (

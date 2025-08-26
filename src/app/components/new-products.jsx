@@ -1,11 +1,10 @@
-
 import React from "react";
 import { Eye, ShoppingCart } from "lucide-react";
 import { getProducts } from "../actions/productAction";
+import Link from "next/link";
 
 export default async function NewProducts() {
   const data = await getProducts();
-  
 
   return (
     <section
@@ -27,7 +26,6 @@ export default async function NewProducts() {
           {data &&
             data.slice(0, 6).map((item) => (
               <div
-                
                 key={item._id}
                 className="group bg-[#D4B996] rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out flex flex-col"
               >
@@ -40,7 +38,6 @@ export default async function NewProducts() {
                   />
                 </div>
 
-                {/* Content Box */}
                 <div className="p-5 flex flex-col flex-grow">
                   <h3 className="text-xl font-bold text-[#4A2C2A]">
                     {item.name}
@@ -51,19 +48,19 @@ export default async function NewProducts() {
                       $ {item.price} Only
                     </div>
                     <div className="flex gap-2">
-                       <button
-                      className="p-2 rounded-md bg-red-500 hover:bg-red-600 transition-colors duration-300"
-                      aria-label="Add to Cart"
-                    >
-                      <Eye className="w-5 h-5" />
-                    </button>
-                    <button
-                      className="p-2 rounded-md bg-red-500 hover:bg-red-600 transition-colors duration-300"
-                      aria-label="Add to Cart"
-                    >
-                      <ShoppingCart className="w-5 h-5" />
-                    </button>
-                   </div>
+                      <Link
+                        href={`/products/${item._id.toString()}`}
+                        className="p-2 rounded-md bg-red-500 hover:bg-red-600 transition-colors duration-300"
+                      >
+                        <Eye className="w-5 h-5" />
+                      </Link>
+                      <button
+                        className="p-2 rounded-md bg-red-500 hover:bg-red-600 transition-colors duration-300"
+                        aria-label="Add to Cart"
+                      >
+                        <ShoppingCart className="w-5 h-5" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
