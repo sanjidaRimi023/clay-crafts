@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 
-
 import { Eye, EyeClosed, Key, Mail } from "lucide-react";
+import { signIn } from "next-auth/react";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -11,25 +11,37 @@ export default function LoginForm() {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const email = formData.get("email");
-    const password = formData.get("password");
-    // const email = form.email.value;
-    // const password = form.password.value;
-    console.log({ email,password});
+
+    const res = await signIn("credentials", {
+      redirect: false,
+      email: email,
+      password: password,
+    });
+
+    console.log("Login Response:", res);
+
+    if (res?.error) {
+      alert("Invalid credentials");
+    } else {
+      window.location.href = "/";
+    }
   };
   return (
     <>
-      <form className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
         {}
         <div className="space-y-2">
-          <label htmlFor="email" className="block text-sm font-medium">
+          <label
+            htmlFor="email"
+            className="block text-white text-sm font-medium"
+          >
             Email Address
           </label>
           <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-white">
               <Mail />
             </div>
             <input
@@ -38,17 +50,20 @@ export default function LoginForm() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="block w-full pl-10 pr-3 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#E2725B] focus:border-transparent transition-all duration-200"
+              className="block text-white w-full pl-10 pr-3 py-3 border border-[#E2725B] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#E2725B] focus:border-transparent transition-all duration-200"
             />
           </div>
         </div>
         {}
         <div className="space-y-2">
-          <label htmlFor="password" className="block text-sm font-medium">
+          <label
+            htmlFor="password"
+            className="block text-white text-sm font-medium"
+          >
             Password
           </label>
           <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-white">
               <Key />
             </div>
             <input
@@ -57,12 +72,12 @@ export default function LoginForm() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
-              className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#E2725B] focus:border-transparent transition-all duration-200"
+              className="block text-white w-full pl-10 pr-3 py-3 border border-[#E2725B] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#E2725B] focus:border-transparent transition-all duration-200"
             />
             <button
               type="button"
               onClick={togglePasswordVisibility}
-              className="absolute inset-y-0 right-0 pr-3 flex items-center dark:hover:text-gray-300 transition-colors"
+              className="absolute inset-y-0 right-0 pr-3 flex items-center  text-white transition-colors"
             >
               {showPassword ? <Eye /> : <EyeClosed />}
             </button>
@@ -74,22 +89,24 @@ export default function LoginForm() {
             <input
               id="remember-me"
               type="checkbox"
-              className="h-4 w-4 focus:ring-[#E2725B]"
+              className="h-4 w-4 text-white focus:ring-[#E2725B]"
             />
-            <label htmlFor="remember-me" className="ml-2 block text-sm">
+            <label
+              htmlFor="remember-me"
+              className="ml-2 block text-sm text-white"
+            >
               Remember me
             </label>
           </div>
-          <a href="#" className="text-sm font-medium ">
+          <a href="#" className="text-sm font-medium text-white">
             Forgot password?
           </a>
         </div>
 
         {}
         <button
-      
           type="submit"
-          className="w-full bg-gradient-to-r from-[#df9d6b] to-[#c99186]  font-semibold py-3 px-4 rounded-xl transform transition-all duration-200 hover:scale-[1.02] shadow-lg"
+          className="w-full bg-gradient-to-r  text-white from-[#df9d6b] to-[#c99186]  font-semibold py-3 px-4 rounded-xl transform transition-all duration-200 hover:scale-[1.02] shadow-lg"
         >
           Sign In
         </button>

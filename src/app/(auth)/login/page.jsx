@@ -21,10 +21,10 @@ export default function LoginPage() {
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t" />
+                <div className="w-full text-white border-t" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-gradient-to-r from-[#df9d6b] to-[#c99186] rounded-2xl">
+                <span className="px-2  text-white bg-gradient-to-r from-[#df9d6b] to-[#c99186] rounded-2xl">
                   Or continue with
                 </span>
               </div>
@@ -32,12 +32,12 @@ export default function LoginPage() {
           </div>
 
           {}
-          <div className="mt-6 grid grid-cols-2 gap-3"></div>
+          <div className="mt-6 grid grid-cols-2 text-white gap-3"></div>
 
           {}
-          <p className="mt-6 text-center text-sn">
+          <p className="mt-6 text-center text-white text-sn">
             Don't have an account?{" "}
-            <Link href="/register" className="font-medium hover:underline">
+            <Link href="/register" className="font-medium text-white hover:underline">
               Register
             </Link>
           </p>

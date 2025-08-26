@@ -9,14 +9,14 @@ export const authOptions = {
       name: "Credentials",
 
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        email : { label: "Email", type: "text", placeholder: "useremail@gmai.com" },
         password: { label: "Password", type: "password" },
      
       },
       async authorize(credentials, req) {
-        const { username, password } = credentials;
+        const { email, password } = credentials;
         console.log(credentials);
-        const user = await dbConnect(collectionNames.USERS).findOne({ username });
+        const user = await dbConnect(collectionNames.USERS).findOne({ email });
         const passwordIsOk = password == user.password;
 
         if (passwordIsOk) {
@@ -31,14 +31,14 @@ export const authOptions = {
  
     async session({ session, token, user }) {
             if (token) {
-                session.user.username = token.username;
+                session.user.email = token.email;
                 session.user.role = token.role
             }
             return session
         },
         async jwt({ token, user, account, profile, isNewUser }) {
             if (user) {
-                token.username = user.username
+                token.email = user.email
                 token.role = user.role
             }
             return token
