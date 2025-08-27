@@ -27,6 +27,7 @@ export default function Navbar() {
           <Link href="/"  className={pathname === "/" ? "underline " : ""}>Home</Link>
           <Link href="/products" className={pathname === "/products" ? "underline " : ""}>Products</Link>
           <Link href="/about" className={pathname === "/about" ? "underline " : ""}>About Us</Link>
+          <Link href="/addproduct" className={pathname === "/addproduct" ? "underline " : ""}>Add Product</Link>
         </ul>
 
         {/* Desktop Auth Buttons */}

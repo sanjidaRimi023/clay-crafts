@@ -4,7 +4,6 @@ import dbConnect, { collectionNames } from "@/lib/dbConnect";
 import { ObjectId } from "mongodb";
 
 export const getProducts = async () => {
-  // const res = await fetch("/potteryData.json");
   const productCollection = dbConnect(collectionNames.PRODUCTS);
   const res = await productCollection.find({}).toArray();
   return res;
@@ -33,15 +32,11 @@ export const addProduct = async (productData) => {
   productData.price = Number(productData.price);
 
   const result = await productCollection.insertOne(productData);
-
-  revalidatePath("/products");
+    const insertedIdStr = result.insertedId.toString();
 
   return {
     success: true,
     message: "Product added successfully!",
-    data: result,
+    data: { ...result, insertedId: insertedIdStr }
   };
 };
-
-
-
