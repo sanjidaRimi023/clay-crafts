@@ -1,7 +1,6 @@
 "use server";
 
 import dbConnect from "@/lib/dbConnect";
-
 export const RegisterUser = async (payload) => {
   const userCollection = dbConnect("users");
   const { email, password } = payload;
@@ -14,7 +13,6 @@ export const RegisterUser = async (payload) => {
   const userExits = await userCollection.findOne({
     email: payload.email,
   });
-
   if (!userExits) {
     const result = await userCollection.insertOne(payload);
     const { acknowledged, insertedId } = result;

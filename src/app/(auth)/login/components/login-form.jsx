@@ -4,29 +4,33 @@ import React, { useState } from "react";
 import { Eye, EyeClosed, Key, Mail } from "lucide-react";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
+import { useSearchParams,useRouter } from "next/navigation";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectPath = searchParams.get("redirect") || "/";
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
 
     const res = await signIn("credentials", {
       redirect: false,
-      email: email,
-      password: password,
+      email,
+      password,
     });
 
     if (res?.error) {
       toast.error("Invalid credentials");
     } else {
-      window.location.href = "/";
       toast.success("Welcome to clayCrafts");
+      router.push(redirectPath);
     }
   };
   return (

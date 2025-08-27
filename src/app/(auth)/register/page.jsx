@@ -24,12 +24,12 @@ const RegisterPage = () => {
         <div className="flex justify-center space-x-4">
           <button
             aria-label="Sign in with Google"
-            className="w-full h-12 flex items-center justify-center bg-[#D4B996] border border-[#C9A66B] rounded-2xl hover:bg-[#A9745F] transition-transform transform hover:scale-110"
+            className="w-full flex items-center justify-center border border-[#C9A66B] font-semibold py-3 px-4 rounded-xl duration-200 hover:scale-[1.02] shadow-lg transition-transform transform hover:scale-105"
           >
             <img
               src="https://www.google.com/favicon.ico"
               alt="Google"
-              className="h-5 w-5"
+              className="h-6 w-6"
             />
           </button>
         </div>

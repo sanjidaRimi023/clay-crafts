@@ -2,27 +2,40 @@
 import React, { useState } from "react";
 import { Eye, EyeClosed, LockKeyhole, Mail, UserPen } from "lucide-react";
 import { RegisterUser } from "@/app/actions/auth/RegisterUser";
+// import { useRouter } from "next/router";
+import { useSearchParams, useRouter} from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function RegisterForm() {
   const [passwordVisible, setPasswordVisible] = useState(false);
-
+  const [loading, setLoading] = useState(false);
+  const router = useRouter()
+  const searchParams = useSearchParams();
+  const redirectPath = searchParams.get("redirect" | "/");
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     const form = e.target;
     const username = form.username.value;
     const email = form.email.value;
     const password = form.password.value;
 
-    RegisterUser({
+    const res = await RegisterUser({
       username,
       email,
       password,
-  
     });
+    if (res.acknowledged) {
+      toast.success("Registration Successfully")
+      router.push(redirectPath)
+    } else {
+      toast.error("You are already exists or invalid data")
+    }
+    setLoading(false)
   };
 
   return (
@@ -38,7 +51,7 @@ export default function RegisterForm() {
             type="text"
             placeholder="Name"
             aria-label="Name"
-            className="w-full pl-10 pr-4 py-3 bg-[#D4B996] border border-[#8B5E3C] rounded-lg focus:ring-2 focus:ring-[#C9A66B] focus:border-[#C9A66B] outline-none transition duration-300 placeholder-[#F5E6D3] text-[#FFF8E7]"
+            className="w-full pl-10 pr-4 py-3 bg-[#8B5E3C]  border border-[#F5E6D3] rounded-lg focus:ring-2 focus:ring-[#C9A66B] focus:border-[#C9A66B] outline-none transition duration-300 placeholder-[#F5E6D3] text-[#FFF8E7]"
           />
         </div>
 
@@ -52,7 +65,7 @@ export default function RegisterForm() {
             type="email"
             placeholder="Email"
             aria-label="Email"
-            className="w-full pl-10 pr-4 py-3 bg-[#D4B996] border border-[#8B5E3C] rounded-lg focus:ring-2 focus:ring-[#C9A66B] focus:border-[#C9A66B] outline-none transition duration-300 placeholder-[#F5E6D3] text-[#FFF8E7]"
+            className="w-full pl-10 pr-4 py-3 bg-[#8B5E3C]  border border-[#F5E6D3] rounded-lg focus:ring-2 focus:ring-[#C9A66B] focus:border-[#C9A66B] outline-none transition duration-300 placeholder-[#F5E6D3] text-[#FFF8E7]"
           />
         </div>
 
@@ -66,7 +79,7 @@ export default function RegisterForm() {
             type={passwordVisible ? "text" : "password"}
             placeholder="Password"
             aria-label="Password"
-            className="w-full pl-10 pr-10 py-3 bg-[#D4B996] border border-[#8B5E3C] rounded-lg focus:ring-2 focus:ring-[#C9A66B] focus:border-[#C9A66B] outline-none transition duration-300 placeholder-[#F5E6D3] text-[#FFF8E7]"
+            className="w-full pl-10 pr-10 py-3 bg-[#8B5E3C]  border border-[#F5E6D3] rounded-lg focus:ring-2 focus:ring-[#C9A66B] focus:border-[#C9A66B] outline-none transition duration-300 placeholder-[#F5E6D3] text-[#FFF8E7]"
           />
           <button
             type="button"
@@ -91,9 +104,9 @@ export default function RegisterForm() {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-[#D4B996] text-[#FFF8E7] font-bold py-3 px-4 rounded-lg hover:bg-[#A9745F] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C9A66B] shadow-md transition-transform transform hover:scale-105"
+          className="w-full bg-gradient-to-r  text-white from-[#df9d6b] to-[#c99186]  font-semibold py-3 px-4 rounded-xl duration-200 hover:scale-[1.02] shadow-lg transition-transform transform hover:scale-105"
         >
-          Sign Up
+       {loading? "Registering": "Sign Up"}
         </button>
       </form>
     </>
