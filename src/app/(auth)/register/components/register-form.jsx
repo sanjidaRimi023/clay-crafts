@@ -3,22 +3,23 @@ import React, { useState } from "react";
 import { Eye, EyeClosed, LockKeyhole, Mail, UserPen } from "lucide-react";
 import { RegisterUser } from "@/app/actions/auth/RegisterUser";
 // import { useRouter } from "next/router";
-import { useSearchParams, useRouter} from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { signIn } from "next-auth/react";
 
 export default function RegisterForm() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-  const router = useRouter()
-  const searchParams = useSearchParams();
-  const redirectPath = searchParams.get("redirect") || "/products";
+  const router = useRouter();
+ const searchParams = useSearchParams();
+  const redirectPath = searchParams.get("redirect") || "/";
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true)
+    setLoading(true);
     const form = e.target;
     const username = form.username.value;
     const email = form.email.value;
@@ -29,13 +30,20 @@ export default function RegisterForm() {
       email,
       password,
     });
+    
+
     if (res.acknowledged) {
-      toast.success("Registration Successfully")
-      router.push(redirectPath)
+      signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+      toast.success("Registration Successfully");
+   router.push(redirectPath);
     } else {
-      toast.error("You are already exists or invalid data")
+      toast.error("You are already exists or invalid data");
     }
-    setLoading(false)
+    setLoading(false);
   };
 
   return (
@@ -106,7 +114,7 @@ export default function RegisterForm() {
           type="submit"
           className="w-full bg-gradient-to-r  text-white from-[#df9d6b] to-[#c99186]  font-semibold py-3 px-4 rounded-xl duration-200 hover:scale-[1.02] shadow-lg transition-transform transform hover:scale-105"
         >
-       {loading? "Registering": "Sign Up"}
+          {loading ? "Registering" : "Sign Up"}
         </button>
       </form>
     </>

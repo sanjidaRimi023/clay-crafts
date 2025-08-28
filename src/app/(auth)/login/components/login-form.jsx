@@ -3,22 +3,23 @@ import React, { useState } from "react";
 import { Eye, EyeClosed, Key, Mail } from "lucide-react";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
-import { useSearchParams,useRouter } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const searchParams = useSearchParams();
   const redirectPath = searchParams.get("redirect") || "/";
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
- const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     const res = await signIn("credentials", {
       redirect: false,
       email,
@@ -31,6 +32,7 @@ export default function LoginForm() {
       toast.success("Welcome to clayCrafts");
       router.push(redirectPath);
     }
+    setLoading(false)
   };
   return (
     <>
@@ -107,11 +109,11 @@ export default function LoginForm() {
         </div>
 
         {}
-        <button
+       <button
           type="submit"
-          className="w-full bg-gradient-to-r  text-white from-[#df9d6b] to-[#c99186]  font-semibold py-3 px-4 rounded-xl transform transition-all duration-200 hover:scale-[1.02] shadow-lg"
+          className="w-full bg-gradient-to-r  text-white from-[#df9d6b] to-[#c99186]  font-semibold py-3 px-4 rounded-xl duration-200 hover:scale-[1.02] shadow-lg transition-transform transform hover:scale-105"
         >
-          Sign In
+          {loading ? "login...." : "Login"}
         </button>
       </form>
     </>

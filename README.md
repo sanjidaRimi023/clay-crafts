@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+# 🏺 ClayCraft
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+ClayCraft is my very first Next.js project 🎉.
+It’s a basic e-commerce type website where I used NextAuth.js for authentication (App Router).
+The project is deployed on Vercel and uses MongoDB Atlas as the database.
+I plan to add more advanced features in the future (like cart, payment integration, product filters, etc.). 🚀
+
+---
+## Features
+
+- 🔐 User Authentication with NextAuth.js 
+- 🎨 Modern UI with TailwindCSS and lucide-react icons
+- 📦 File Upload support using react-dropzone
+- 🗂️ Custom dropdowns with react-select
+- 🔔 User-friendly notifications with react-hot-toast
+- ⚡ Alerts & confirmations with SweetAlert2
+
+
+## Color Reference
+
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Navbar & Footer BG | [#8B5E3C ] |
+| Hero BG, Buttons  | [#E2725B] |
+| Cards, Section BG | [#D4B996] |
+| Text, BG highlight  | [#FAF3E0] |
+
+---
+
+
+
+## Tech Stack
+
+**Framework:** Next JS, TailwindCSS
+
+**Auth:**  Next Auth 
+
+**Dashboard:**  MongoDB
+
+**Deployment:**  Vercel
+
+
+### 1. Clone the repository
+
+```javascript
+
+git clone https://github.com/sanjidarimi023/claycraft.git
+cd claycraft
+```
+### 2. Install dependencies
+
+```javascript
+
+npm install 
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To run this project, you will need to add the following environment variables to your .env file
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+`NEXTAUTH_URL`=http://localhost:3000
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`NEXT_PUBLIC_MONGODB_URL`= your mongoDB url 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`NEXT_PUBLIC_DB_NAME`= your-database-name
 
-## Deploy on Vercel
+`NEXTAUTH_SECRET`= your nextauth secret  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`NEXT_PUBLIC_CLOUD_NAME`=your-cloudinary-name
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`NEXT_PUBLIC_CLOUD_PRESET`=your-cloudinary-preset
+
+## Run the development server
+
+```bash
+ npm run dev
+```
+#### ➡️ Then open http://localhost:3000
+ in your browser.
+
+## 🌍 Deployment
+This project is deployed on Vercel.
+Just connect your GitHub repository to Vercel, set environment variables, and it will auto-deploy.
+
+### 🛒 Future Improvements
+
+- 🛍️ Shopping cart system
+
+- 💳 Payment gateway integration (Stripe, SSLCommerz, etc.)
+
+- 📦 Order management
+
+- ⭐ Product reviews & ratings
+
+## Author
+
+Developer: Sanjida Rimi
+

@@ -108,16 +108,17 @@ export default function Navbar() {
 
           {session?.user ? (
             <>
-              <span>{session.user.email}</span>
-              <Link href="/dashboard" onClick={() => setIsOpen(false)}>
-                Dashboard
-              </Link>
               <button
                 onClick={() => signOut({ callbackUrl: "/" })}
                 className="bg-white text-[#a8754e] px-4 py-1 rounded"
               >
                 Logout
               </button>
+              <span>{session.user.email}</span>
+              {/* <Link href="/dashboard" onClick={() => setIsOpen(false)}>
+                Dashboard
+              </Link> */}
+              
             </>
           ) : (
             <>
