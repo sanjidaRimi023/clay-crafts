@@ -181,7 +181,7 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="min-h-screen p-4 sm:p-6 md:p-8 bg-[#FAF3E0] flex items-center justify-center font-sans">
+    <div className="min-h-screen p-4 sm:p-6 md:p-8 bg-[#FAF3E0] flex items-center justify-center playfair">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full max-w-4xl bg-[#D4B996] p-8 rounded-2xl shadow-2xl shadow-[#4A2C2A]/20 space-y-6"

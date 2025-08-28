@@ -11,7 +11,7 @@ export default function RegisterForm() {
   const [loading, setLoading] = useState(false);
   const router = useRouter()
   const searchParams = useSearchParams();
-  const redirectPath = searchParams.get("redirect" | "/");
+  const redirectPath = searchParams.get("redirect") || "/products";
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };

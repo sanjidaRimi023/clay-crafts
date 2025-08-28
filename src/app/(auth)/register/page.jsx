@@ -14,13 +14,13 @@ const RegisterPage = () => {
         </p>
         <RegisterForm />
         {/* OR Divider */}
-        <div className="flex items-center my-6">
+        {/* <div className="flex items-center my-6">
           <hr className="flex-grow border-t border-[#C9A66B]" />
           <span className="mx-4 text-sm text-[#F5E6D3]">Or sign in with</span>
           <hr className="flex-grow border-t border-[#C9A66B]" />
-        </div>
+        </div> */}
 
-        {/* Social Sign-in */}
+        {/* Social Sign-in
         <div className="flex justify-center space-x-4">
           <button
             aria-label="Sign in with Google"
@@ -32,7 +32,7 @@ const RegisterPage = () => {
               className="h-6 w-6"
             />
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

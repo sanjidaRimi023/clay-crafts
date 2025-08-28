@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-
 import { Eye, EyeClosed, Key, Mail } from "lucide-react";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
@@ -35,7 +34,7 @@ export default function LoginForm() {
   };
   return (
     <>
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6 roboto">
         {}
         <div className="space-y-2">
           <label

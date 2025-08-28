@@ -1,20 +1,27 @@
 "use client";
-import { Instagram, Linkedin, Send, ArrowUp } from "lucide-react";
+import {
+  Instagram,
+  Linkedin,
+  Send,
+  ArrowUp,
+  ArrowUpRightSquare,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
-
+  const pathname = usePathname();
 
   const handleSubscribe = (e) => {
     e.preventDefault();
-    toast.success("Thank your for Subscritption")
+    toast.success("Thank your for Subscritption");
     // if (email.trim() !== "") {
     //   setSubscribed(true);
     //   console.log("Subscribed with:", email);
@@ -25,7 +32,6 @@ export default function Footer() {
     // }
   };
 
- 
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.scrollY > 300) {
@@ -43,13 +49,20 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative font-sans bg-gradient-to-r from-[#7B4C34] via-[#8B5E3C] to-[#7B4C34] text-white">
+    <footer className="relative playfair bg-gradient-to-r from-[#7B4C34] via-[#8B5E3C] to-[#7B4C34] text-white">
       <div className="container px-6 py-14 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Brand Info */}
         <div>
           <Link href="/" className="flex items-center space-x-2">
-            <Image src="/logo.png" alt="ClayCrafts Logo" width={50} height={50} />
-            <span className="text-2xl font-bold tracking-wider">CLAYCRAFTS</span>
+            <Image
+              src="/logo.png"
+              alt="ClayCrafts Logo"
+              width={50}
+              height={50}
+            />
+            <span className="text-2xl font-bold tracking-wider">
+              CLAYCRAFTS
+            </span>
           </Link>
           <p className="mt-4 text-sm text-gray-300">
             Crafted by hand, inspired by earth. Authentic earthenware for the
@@ -60,30 +73,56 @@ export default function Footer() {
         {/* Explore Links */}
         <div>
           <p className="font-semibold text-lg">Explore</p>
-          <div className="flex flex-col mt-5 space-y-3">
-            {["Products", "New Arrivals", "About Us"].map((link, i) => (
-              <a
-                key={i}
-                href="#"
-                className="text-gray-300 transition-all duration-300 hover:text-white hover:translate-x-1"
+     
+            <ul className="flex flex-col mt-5 space-y-3">
+              <Link href="/" className={pathname === "/" ? "underline " : ""}>
+                Home
+              </Link>
+              <Link
+                href="/products"
+                className={pathname === "/products" ? "underline " : ""}
               >
-                {link}
-              </a>
-            ))}
-          </div>
+                Products
+              </Link>
+              <Link
+                href="/about"
+                className={pathname === "/about" ? "underline " : ""}
+              >
+                About Us
+              </Link>
+              <Link
+                href="/addproduct"
+                className={pathname === "/addproduct" ? "underline " : ""}
+              >
+                Add Product
+              </Link>
+            </ul>
+     
         </div>
 
         {/* Connect */}
         <div>
           <p className="font-semibold text-lg">Connect</p>
           <div className="flex items-center mt-5 space-x-5">
-            <motion.a whileHover={{ scale: 1.2 }} href="#" aria-label="Instagram">
+            <motion.a
+              whileHover={{ scale: 1.2 }}
+              href="#"
+              aria-label="Instagram"
+            >
               <Instagram className="text-gray-300 hover:text-white" />
             </motion.a>
-            <motion.a whileHover={{ scale: 1.2 }} href="#" aria-label="LinkedIn">
+            <motion.a
+              whileHover={{ scale: 1.2 }}
+              href="#"
+              aria-label="LinkedIn"
+            >
               <Linkedin className="text-gray-300 hover:text-white" />
             </motion.a>
-            <motion.a whileHover={{ scale: 1.2 }} href="mailto:info@claycrafts.com" aria-label="Email">
+            <motion.a
+              whileHover={{ scale: 1.2 }}
+              href="mailto:info@claycrafts.com"
+              aria-label="Email"
+            >
               <Send className="text-gray-300 hover:text-white" />
             </motion.a>
           </div>
@@ -118,14 +157,18 @@ export default function Footer() {
         </div>
       </div>
 
-      <hr className="border-gray-600" />
+      <hr className="border-[#e68f63]" />
 
       {/* Footer Bottom */}
       <div className="flex flex-col sm:flex-row justify-between items-center text-sm px-6 py-5">
         <p>© {new Date().getFullYear()} ClayCrafts. All Rights Reserved.</p>
         <div className="flex items-center mt-3 space-x-5 sm:mt-0">
-          <a href="#" className="hover:underline">Privacy Policy</a>
-          <a href="#" className="hover:underline">Terms of Use</a>
+          <a href="#" className="hover:underline">
+            Privacy Policy
+          </a>
+          <a href="#" className="hover:underline">
+            Terms of Use
+          </a>
         </div>
       </div>
 
