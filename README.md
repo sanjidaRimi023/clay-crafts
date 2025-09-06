@@ -29,8 +29,6 @@ I plan to add more advanced features in the future (like cart, payment integrati
 
 ---
 
-
-
 ## Tech Stack
 
 **Framework:** Next JS, TailwindCSS

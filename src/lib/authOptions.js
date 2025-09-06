@@ -2,7 +2,6 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import dbConnect, { collectionNames } from "./dbConnect";
 
-
 export const authOptions = {
   providers: [
     CredentialsProvider({
