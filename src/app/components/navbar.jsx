@@ -8,58 +8,61 @@ import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const { data: session } = useSession();
-
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const pathname = usePathname();
 
+  // active link styles
+  const linkClasses = (path) =>
+    `px-3 py-2 rounded-lg transition-colors duration-200 ${
+      pathname === path
+        ? "bg-white/20"
+        : "hover:bg-white/10 hover:underline"
+    }`;
 
   return (
-    <nav className="bg-[#a8754e] playfair font-semibold sticky top-0 z-50">
+    <nav className="bg-[#a8754e] playfair font-semibold sticky top-0 z-50 shadow-md">
       <div className="container mx-auto flex items-center justify-between py-3 px-4">
         {/* Logo */}
         <Link href="/">
-          <Image src="/logo.png" width={60} height={60} alt="navicon" />
+          <Image src="/logo.png" width={55} height={55} alt="Logo" />
         </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-10 text-white">
-          <Link href="/"  className={pathname === "/" ? "underline " : ""}>Home</Link>
-          <Link href="/products" className={pathname === "/products" ? "underline " : ""}>Products</Link>
-          <Link href="/about" className={pathname === "/about" ? "underline " : ""}>About Us</Link>
-          <Link href="/addproduct" className={pathname === "/addproduct" ? "underline " : ""}>Add Product</Link>
+        <ul className="hidden md:flex gap-6 text-white text-sm">
+          <Link href="/" className={linkClasses("/")}>
+            Home
+          </Link>
+          <Link href="/products" className={linkClasses("/products")}>
+            Products
+          </Link>
+          <Link href="/about" className={linkClasses("/about")}>
+            About Us
+          </Link>
+          <Link href="/addproduct" className={linkClasses("/addproduct")}>
+            Add Product
+          </Link>
         </ul>
 
-        {/* Desktop Auth Buttons */}
+        {/* Desktop Auth */}
         <div className="hidden md:block relative">
           {session?.user ? (
-            <div className="flex items-center gap-4">
-              {/* Avatar */}
+            <div className="flex items-center gap-4 relative">
               <img
-                src="/userImage.png" // public folder থেকে
+                src="/userImage.png"
                 alt="User Avatar"
-                className="w-10 h-10 rounded-full cursor-pointer"
+                className="w-10 h-10 rounded-full ring-2 ring-white cursor-pointer"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               />
-
               {/* Dropdown */}
               {isDropdownOpen && (
-                <div className="absolute right-0 mt-52 w-56 bg-[#eeb183] rounded-lg shadow-lg py-3 z-50">
-                  <div className="px-4 py-2 border-b">
-                    <p className="text-sm">
-                      {session.user.email}
-                    </p>
+                <div className="absolute right-0 top-12 w-60 bg-white rounded-lg shadow-xl overflow-hidden animate-fade-in">
+                  <div className="px-4 py-3 border-b">
+                    <p className="text-sm text-gray-600">{session.user.email}</p>
                   </div>
-                  <Link
-                    href="/dashboard"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                    onClick={() => setIsDropdownOpen(false)}
-                  >
-                    Dashboard
-                  </Link>
                   <button
                     onClick={() => signOut({ callbackUrl: "/" })}
-                    className="w-full text-left px-4 py-2 hover:bg-gray-100"
+                    className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
                   >
                     Logout
                   </button>
@@ -67,16 +70,16 @@ export default function Navbar() {
               )}
             </div>
           ) : (
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               <Link
                 href="/login"
-                className="bg-white text-[#a8754e] px-4 py-1 rounded"
+                className="bg-white text-[#a8754e] px-4 py-2 rounded-lg hover:bg-gray-200 transition"
               >
                 Login
               </Link>
               <Link
                 href="/register"
-                className="border border-white text-white px-4 py-1 rounded"
+                className="border border-white text-white px-4 py-2 rounded-lg hover:bg-white/20 transition"
               >
                 Register
               </Link>
@@ -84,7 +87,7 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Mobile Menu Icon */}
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden text-white focus:outline-none"
@@ -95,44 +98,43 @@ export default function Navbar() {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="md:hidden bg-[#a8754e] text-white flex flex-col items-center gap-4 py-4 animate-slide-down">
-          <Link href="/" onClick={() => setIsOpen(false)} className={pathname === "/" ? "underline" : ""}>
+        <div className="md:hidden bg-[#a8754e] text-white flex flex-col items-center gap-4 py-6 animate-slide-down">
+          <Link href="/" onClick={() => setIsOpen(false)} className={linkClasses("/")}>
             Home
           </Link>
-          <Link href="/products" onClick={() => setIsOpen(false)} className={pathname === "/products" ? "underline " : ""}>
+          <Link href="/products" onClick={() => setIsOpen(false)} className={linkClasses("/products")}>
             Products
           </Link>
-          <Link href="/about" onClick={() => setIsOpen(false)} className={pathname === "/about" ? "underline " : ""}>
+          <Link href="/about" onClick={() => setIsOpen(false)} className={linkClasses("/about")}>
             About Us
+          </Link>
+          <Link href="/addproduct" onClick={() => setIsOpen(false)} className={linkClasses("/addproduct")}>
+            Add Product
           </Link>
 
           {session?.user ? (
             <>
+              <span className="text-sm">{session.user.email}</span>
               <button
                 onClick={() => signOut({ callbackUrl: "/" })}
-                className="bg-white text-[#a8754e] px-4 py-1 rounded"
+                className="bg-white text-[#a8754e] px-4 py-2 rounded-lg"
               >
                 Logout
               </button>
-              <span>{session.user.email}</span>
-              {/* <Link href="/dashboard" onClick={() => setIsOpen(false)}>
-                Dashboard
-              </Link> */}
-              
             </>
           ) : (
             <>
               <Link
                 href="/login"
                 onClick={() => setIsOpen(false)}
-                className="bg-white text-[#a8754e] px-4 py-1 rounded"
+                className="bg-white text-[#a8754e] px-4 py-2 rounded-lg"
               >
                 Login
               </Link>
               <Link
                 href="/register"
                 onClick={() => setIsOpen(false)}
-                className="border border-white px-4 py-1 rounded"
+                className="border border-white px-4 py-2 rounded-lg"
               >
                 Register
               </Link>

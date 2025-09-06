@@ -113,7 +113,7 @@ export default function LoginForm() {
           type="submit"
           className="w-full bg-gradient-to-r  text-white from-[#df9d6b] to-[#c99186]  font-semibold py-3 px-4 rounded-xl duration-200 hover:scale-[1.02] shadow-lg transition-transform transform hover:scale-105"
         >
-          {loading ? "login...." : "Login"}
+          {loading ? "processing...." : "Login"}
         </button>
       </form>
     </>
